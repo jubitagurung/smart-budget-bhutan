@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Budget Bhutan – Financial Awareness Platform</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- Our CSS file (all styles live in style.css) -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION BAR (fixed at top on all pages)
+============================================================ -->
+<nav id="navbar">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <span class="logo-icon">🏔️</span>
+      Smart Budget Bhutan
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')"      data-page="home"      class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a></li>
+      <li><a href="#" onclick="showPage('budget')"    data-page="budget">Budget Examples</a></li>
+      <li><a href="#" onclick="showPage('tips')"      data-page="tips">Savings Tips</a></li>
+      <li><a href="#" onclick="showPage('quiz')"      data-page="quiz">Quiz</a></li>
+      <li><a href="#" onclick="showPage('about')"     data-page="about">About</a></li>
+    </ul>
+
+    <!-- Hamburger button (shows on mobile) -->
+    <button class="nav-burger" id="navBurger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile dropdown menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');closeMobileMenu()">🏠 Home</a>
+  <a href="#" onclick="showPage('dashboard');closeMobileMenu()">📊 Dashboard</a>
+  <a href="#" onclick="showPage('budget');closeMobileMenu()">💰 Budget Examples</a>
+  <a href="#" onclick="showPage('tips');closeMobileMenu()">💡 Savings Tips</a>
+  <a href="#" onclick="showPage('quiz');closeMobileMenu()">📝 Quiz</a>
+  <a href="#" onclick="showPage('about');closeMobileMenu()">ℹ️ About</a>
+</div>
+
+
+<!-- ============================================================
+     PAGE 1: HOME
+============================================================ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🇧🇹 Bhutan Financial Awareness Initiative</div>
+      <h1>Smart Budget<br/><span>Bhutan</span></h1>
+      <p class="hero-sub">
+        Empowering households in urban Bhutan with the knowledge, tools,
+        and data insights to build lasting financial resilience.
+      </p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" onclick="showPage('dashboard')">📊 Explore Data</button>
+        <button class="btn btn-outline" style="border-color:#fff;color:#fff" onclick="showPage('quiz')">📝 Take the Quiz</button>
+      </div>
+      <!-- Key statistics -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">72%</div>
+          <div class="lbl">of households lack formal budgets</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3×</div>
+          <div class="lbl">more resilient with emergency savings</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">BTN</div>
+          <div class="lbl">local currency tracked in our data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Budgeting Matters -->
+  <section class="section bg-neutral">
+    <div class="container">
+      <div class="section-label">Why it matters</div>
+      <h2 class="section-title">Financial Resilience Starts at Home</h2>
+      <div class="divider"></div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-icon">🛡️</div>
+          <h3>Build a Safety Net</h3>
+          <p>An emergency fund of just 3 months of expenses can protect your family from unexpected job loss, medical bills, or economic downturns.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">📈</div>
+          <h3>Track & Grow</h3>
+          <p>Understanding where your money goes is the first step to making smarter decisions. Even small changes in habits lead to measurable savings.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">🎓</div>
+          <h3>Invest in Education</h3>
+          <p>Bhutanese families that prioritize education spending report higher long-term financial stability across generations.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon">🤝</div>
+          <h3>Community Strength</h3>
+          <p>Financially resilient households contribute to stronger, more stable communities — a cornerstone of Bhutan's Gross National Happiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Explore Real Financial Insights</h2>
+          <p>Dive into our interactive Tableau dashboard built on household financial data from urban Bhutan. No sign-up required.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showPage('dashboard')">View Dashboard →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Preview Card -->
+  <section class="section bg-neutral">
+    <div class="container">
+      <div class="section-label">Data Preview</div>
+      <h2 class="section-title">Insights from Urban Bhutan</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        Our embedded Tableau dashboard provides a window into real household financial patterns —
+        income, expenses, savings, and resilience indicators.
+      </p>
+      <div class="preview-card">
+        <div class="preview-header">
+          <div class="preview-dot" style="background:#ff5f57"></div>
+          <div class="preview-dot" style="background:#febc2e"></div>
+          <div class="preview-dot" style="background:#28c840"></div>
+          <span style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-left:8px">
+            Smart Budget Bhutan – Tableau Dashboard
+          </span>
+        </div>
+        <div class="preview-body">
+          <div>
+            <div class="big-icon">📊</div>
+            <p style="font-size:1.1rem;font-weight:600;color:var(--neutral-800);margin-bottom:8px">
+              Interactive Financial Dashboard
+            </p>
+            <p>Household income trends · Expense patterns · Savings behaviour · Resilience indicators</p>
+            <br/>
+            <button class="btn btn-primary" onclick="showPage('dashboard')" style="margin:0 auto">
+              Open Full Dashboard →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Navigation Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Explore</div>
+      <h2 class="section-title">Everything You Need</h2>
+      <div class="divider"></div>
+      <div class="card-grid card-grid-3">
+        <div class="card" style="cursor:pointer" onclick="showPage('budget')">
+          <div style="font-size:2rem;margin-bottom:12px">🏘️</div>
+          <h3 style="margin-bottom:8px">Budget Examples</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">See sample household budgets across different income levels in Bhutan.</p>
+          <p style="color:var(--red);font-weight:600;margin-top:16px;font-size:0.875rem">Explore →</p>
+        </div>
+        <div class="card" style="cursor:pointer" onclick="showPage('tips')">
+          <div style="font-size:2rem;margin-bottom:12px">💡</div>
+          <h3 style="margin-bottom:8px">Savings Tips</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">Practical, actionable financial advice tailored for Bhutanese households.</p>
+          <p style="color:var(--red);font-weight:600;margin-top:16px;font-size:0.875rem">Read More →</p>
+        </div>
+        <div class="card" style="cursor:pointer" onclick="showPage('quiz')">
+          <div style="font-size:2rem;margin-bottom:12px">🧠</div>
+          <h3 style="margin-bottom:8px">Financial Quiz</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">Test your financial awareness with our interactive quiz and get your score.</p>
+          <p style="color:var(--red);font-weight:600;margin-top:16px;font-size:0.875rem">Take Quiz →</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+
+<!-- ============================================================
+     PAGE 2: DASHBOARD
+============================================================ -->
+<div id="page-dashboard" class="page">
+
+  <div class="dashboard-hero">
+    <div class="container">
+      <div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;font-weight:600">
+        📊 Interactive Data
+      </div>
+      <h1>Financial Resilience Dashboard</h1>
+      <p>Explore household-level financial data from urban Bhutan. Use the interactive controls within the Tableau dashboard to filter, compare, and uncover insights.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- 4 insight summary cards -->
+      <div class="section-label">What the data shows</div>
+      <h2 class="section-title">Key Financial Indicators</h2>
+      <div class="divider"></div>
+      <div class="insight-cards" style="margin-bottom:48px">
+        <div class="insight-card">
+          <div class="insight-icon">💵</div>
+          <h3>Household Income Trends</h3>
+          <p>Median household incomes in urban Bhutan show modest growth, with significant variance across sectors such as civil service, trade, and informal employment.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🛒</div>
+          <h3>Expense Patterns</h3>
+          <p>Food, housing, and education consistently rank as the top three expenditure categories, collectively absorbing 60–75% of monthly household income.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">🏦</div>
+          <h3>Savings Behaviour</h3>
+          <p>Fewer than 40% of surveyed households maintain a dedicated savings account. Those who do report significantly higher financial confidence during hardships.</p>
+        </div>
+        <div class="insight-card">
+          <div class="insight-icon">📐</div>
+          <h3>Resilience Indicators</h3>
+          <p>Financial resilience composite scores reflect savings buffers, income diversity, and debt levels — with urban households outperforming rural counterparts.</p>
+        </div>
+      </div>
+
+      <!-- Tableau Dashboard Embed -->
+      <div class="tableau-wrap">
+        <div class="tableau-bar">
+          <span>🏔️ Smart Budget Bhutan — Tableau Public Dashboard</span>
+          <span style="opacity:0.7;font-size:0.75rem">Interactive · Use filters inside the dashboard</span>
+        </div>
+        <div class="tableau-iframe-container">
+          <iframe
+            src="https://public.tableau.com/views/FinancialResilienceattheHouseholdLevelinUrbanBhutan/IntroducingSmartBudgetBhutan2?:embed=y&:display_count=yes&:showVizHome=no&:toolbar=yes&:animate_transition=yes"
+            title="Financial Resilience at the Household Level in Urban Bhutan"
+            allowfullscreen
+            style="width:100%;height:900px;border:none;">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- About the dashboard note -->
+      <div class="card mt-12" style="background:var(--gold-pale);border:2px solid var(--gold)">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:1.8rem">ℹ️</span>
+          <div>
+            <h3 style="margin-bottom:8px;font-size:1rem">About this Dashboard</h3>
+            <p style="font-size:0.875rem;color:var(--neutral-600)">
+              This Tableau dashboard was created as part of the Smart Budget Bhutan Financial Awareness Platform.
+              It visualises aggregate, anonymised household financial data from urban Bhutan. The dashboard does not
+              contain any personally identifiable information and is intended solely for educational and awareness
+              purposes. Data is sourced from household surveys and is presented here under a public data licence.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- end page-dashboard -->
+
+
+<!-- ============================================================
+     PAGE 3: BUDGET EXAMPLES
+============================================================ -->
+<div id="page-budget" class="page">
+
+  <div class="budget-hero">
+    <div class="container">
+      <div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);margin-bottom:12px;font-weight:600">
+        💰 Illustrative Examples
+      </div>
+      <h1>Sample Household Budgets</h1>
+      <p>
+        These are illustrative, non-real budget examples designed to help you understand how
+        different Bhutanese households might allocate their monthly income. No real personal data is shown.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Household type tabs -->
+      <div class="household-tabs" id="householdTabs">
+        <button class="htab active" onclick="switchHousehold('entry')">Entry-Level 🏠</button>
+        <button class="htab"        onclick="switchHousehold('mid')">Mid-Income 🏡</button>
+        <button class="htab"        onclick="switchHousehold('upper')">Upper-Middle 🏰</button>
+      </div>
+
+      <!-- Budget list + donut chart (filled by JavaScript) -->
+      <div class="budget-layout" id="budgetLayout">
+        <!-- Rendered by renderBudget() in script.js -->
+      </div>
+
+      <!-- 50/30/20 tip box -->
+      <div class="budget-tip-box mt-8">
+        <h4>📌 Budgeting Principle — The 50/30/20 Rule</h4>
+        <p>
+          A widely recommended approach: allocate 50% of income to needs (housing, food, utilities),
+          30% to wants (dining out, entertainment), and 20% to savings and debt repayment.
+          Adjust percentages to fit your own household situation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section bg-neutral">
+    <div class="container">
+      <div class="section-label">Side-by-side comparison</div>
+      <h2 class="section-title">How Budgets Change With Income</h2>
+      <div class="divider"></div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;background:var(--white);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm)">
+          <thead>
+            <tr style="background:linear-gradient(90deg,var(--red-dark),var(--red));color:#fff">
+              <th style="padding:16px 20px;text-align:left;font-size:0.85rem;font-weight:600">Category</th>
+              <th style="padding:16px 20px;text-align:center;font-size:0.85rem;font-weight:600">Entry-Level<br/><small style="opacity:0.8">~BTN 12,000/mo</small></th>
+              <th style="padding:16px 20px;text-align:center;font-size:0.85rem;font-weight:600">Mid-Income<br/><small style="opacity:0.8">~BTN 22,000/mo</small></th>
+              <th style="padding:16px 20px;text-align:center;font-size:0.85rem;font-weight:600">Upper-Middle<br/><small style="opacity:0.8">~BTN 40,000/mo</small></th>
+            </tr>
+          </thead>
+          <tbody id="compTable">
+            <!-- Rendered by renderCompTable() in script.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-budget -->
+
+
+<!-- ============================================================
+     PAGE 4: SAVINGS TIPS
+============================================================ -->
+<div id="page-tips" class="page">
+
+  <div class="tips-hero">
+    <div class="container">
+      <div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;font-weight:600">
+        💡 Practical Guidance
+      </div>
+      <h1>Savings Tips for Bhutanese Households</h1>
+      <p>Actionable strategies rooted in financial best practices, adapted for the urban Bhutan context. No income required — just commitment and consistency.</p>
+    </div>
+  </div>
+
+  <!-- 6 Tip Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Core Strategies</div>
+      <h2 class="section-title">Build Your Financial Foundation</h2>
+      <div class="divider"></div>
+      <div class="tips-feature-grid">
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#fff3e0,#fff8f0)">
+            <span class="ico">🆘</span>
+            <h3>Emergency Fund</h3>
+            <span class="badge">Priority #1</span>
+          </div>
+          <div class="tip-card-body">
+            <p>An emergency fund is your financial safety net. Aim to save 3–6 months of essential expenses in a separate, accessible account before investing.</p>
+            <ul class="tip-steps">
+              <li>Start with a goal of BTN 5,000 as your first milestone</li>
+              <li>Open a separate savings account earmarked only for emergencies</li>
+              <li>Automate a small monthly transfer, even BTN 500/month helps</li>
+              <li>Replenish immediately after any withdrawal</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#e8f5e9,#f1f8e9)">
+            <span class="ico">✂️</span>
+            <h3>Cut Unnecessary Spending</h3>
+            <span class="badge">Quick Wins</span>
+          </div>
+          <div class="tip-card-body">
+            <p>Identifying and reducing low-value spending is often the fastest path to freeing up savings. Track before you cut.</p>
+            <ul class="tip-steps">
+              <li>Review last month's expenses and categorise each one</li>
+              <li>Identify 3 subscriptions or habits you can reduce or eliminate</li>
+              <li>Cook at home more often — dining out is a major budget leak</li>
+              <li>Use the 24-hour rule before any non-essential purchase</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#e3f2fd,#f0f7ff)">
+            <span class="ico">📅</span>
+            <h3>Monthly Budget Plan</h3>
+            <span class="badge">Habit Builder</span>
+          </div>
+          <div class="tip-card-body">
+            <p>A monthly budget doesn't restrict your life — it gives you permission to spend on what matters most without guilt.</p>
+            <ul class="tip-steps">
+              <li>List all income sources at the start of each month</li>
+              <li>Assign every ngultrum a purpose before spending it</li>
+              <li>Review your budget mid-month and adjust if needed</li>
+              <li>Celebrate when you stay within budget — reward progress</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#fce4ec,#fff0f4)">
+            <span class="ico">🧠</span>
+            <h3>Smart Saving Strategies</h3>
+            <span class="badge">Advanced</span>
+          </div>
+          <div class="tip-card-body">
+            <p>Once you've mastered budgeting basics, these strategies help your money work harder over time.</p>
+            <ul class="tip-steps">
+              <li>Pay yourself first — save before spending on discretionary items</li>
+              <li>Use fixed deposits for funds you won't need for 6–12 months</li>
+              <li>Explore RICBL or BNB savings products designed for households</li>
+              <li>Consider diversifying into government bonds when savings grow</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#f3e5f5,#faf0ff)">
+            <span class="ico">🎯</span>
+            <h3>Goal-Based Saving</h3>
+            <span class="badge">Motivating</span>
+          </div>
+          <div class="tip-card-body">
+            <p>Saving without a goal is like driving without a destination. Concrete targets make it easier to stay on track.</p>
+            <ul class="tip-steps">
+              <li>Define 1 short-term (under 1 year) and 1 long-term saving goal</li>
+              <li>Calculate the monthly amount needed to reach each goal</li>
+              <li>Create a visual tracker (chart on paper works great!)</li>
+              <li>Review goals quarterly and adjust amounts as income changes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tip-feature-card">
+          <div class="tip-card-header" style="background:linear-gradient(135deg,#fff8e1,#fffbf0)">
+            <span class="ico">📚</span>
+            <h3>Financial Education</h3>
+            <span class="badge">Long-term</span>
+          </div>
+          <div class="tip-card-body">
+            <p>Investing in your own financial knowledge pays compounding dividends throughout your life.</p>
+            <ul class="tip-steps">
+              <li>Read one financial article or resource per week</li>
+              <li>Teach basic budgeting concepts to your children</li>
+              <li>Attend free workshops from the Royal Monetary Authority of Bhutan</li>
+              <li>Join community saving groups (e.g., local credit cooperatives)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings Ladder -->
+  <section class="section bg-neutral">
+    <div class="container">
+      <div class="section-label">Step-by-step path</div>
+      <h2 class="section-title">The Savings Ladder</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Progress through these stages at your own pace. Each rung builds the foundation for the next.</p>
+      <div style="max-width:680px">
+        <div class="savings-ladder">
+          <div class="ladder-rung">
+            <div class="rung-num">1</div>
+            <div class="rung-content"><h4>Break Even</h4><p>Cover all monthly expenses without going into debt</p></div>
+            <div class="rung-goal">Stage 1</div>
+          </div>
+          <div class="ladder-rung">
+            <div class="rung-num">2</div>
+            <div class="rung-content"><h4>Small Buffer</h4><p>Save BTN 5,000 as a starter emergency cushion</p></div>
+            <div class="rung-goal">BTN 5K</div>
+          </div>
+          <div class="ladder-rung">
+            <div class="rung-num">3</div>
+            <div class="rung-content"><h4>1-Month Emergency Fund</h4><p>One full month of essential expenses saved</p></div>
+            <div class="rung-goal">1× expenses</div>
+          </div>
+          <div class="ladder-rung">
+            <div class="rung-num">4</div>
+            <div class="rung-content"><h4>3-Month Emergency Fund</h4><p>The financial resilience baseline recommended by experts</p></div>
+            <div class="rung-goal">3× expenses</div>
+          </div>
+          <div class="ladder-rung">
+            <div class="rung-num">5</div>
+            <div class="rung-content"><h4>Goal-Based Savings</h4><p>Save for specific goals: children's education, home, business</p></div>
+            <div class="rung-goal">6× expenses</div>
+          </div>
+          <div class="ladder-rung">
+            <div class="rung-num">6</div>
+            <div class="rung-content"><h4>Wealth Building</h4><p>Invest surplus savings in fixed deposits, bonds, or property</p></div>
+            <div class="rung-goal">🏆 Invest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion (filled by JavaScript) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Frequently Asked</h2>
+      <div class="divider"></div>
+      <div class="accordion" style="max-width:720px" id="faqAccordion">
+        <!-- Rendered by initFaq() in script.js -->
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-tips -->
+
+
+<!-- ============================================================
+     PAGE 5: QUIZ
+============================================================ -->
+<div id="page-quiz" class="page">
+
+  <div class="quiz-hero">
+    <div class="container">
+      <div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;font-weight:600">
+        🧠 Test Your Knowledge
+      </div>
+      <h1>Financial Awareness Quiz</h1>
+      <p>10 quick questions about your financial habits and knowledge. No income or personal data collected — just your awareness level. Takes about 3 minutes.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <!-- Quiz is fully rendered by JavaScript into this container -->
+    <div class="container quiz-container" id="quizContainer">
+    </div>
+  </section>
+
+</div><!-- end page-quiz -->
+
+
+<!-- ============================================================
+     PAGE 6: ABOUT
+============================================================ -->
+<div id="page-about" class="page">
+
+  <div class="about-hero">
+    <div class="container">
+      <div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;font-weight:600">
+        ℹ️ Our Mission
+      </div>
+      <h1>About Smart Budget Bhutan</h1>
+      <p>A financial literacy initiative designed to empower Bhutanese households with knowledge, not data collection.</p>
+    </div>
+  </div>
+
+  <!-- Why We Built This -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Our purpose</div>
+      <h2 class="section-title">Why We Built This</h2>
+      <div class="divider"></div>
+      <p style="font-size:1.05rem;color:var(--neutral-600);max-width:720px;margin-bottom:48px;line-height:1.8">
+        Smart Budget Bhutan was created to address a gap in financial literacy resources tailored specifically
+        for urban Bhutanese households. While macro-economic data exists, accessible and actionable guidance
+        at the household level has been limited. This platform bridges that gap through data storytelling,
+        practical education, and interactive tools — all without collecting any personal financial information.
+      </p>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="aco">📊</div>
+          <h3>Data-Driven Insights</h3>
+          <p>Our Tableau dashboard presents aggregate, anonymised data from household surveys conducted in urban Bhutan. All visualisations are intended for educational awareness only.</p>
+        </div>
+        <div class="about-card">
+          <div class="aco">🎓</div>
+          <h3>Financial Education</h3>
+          <p>Every page on this platform — from budget examples to savings tips — is grounded in internationally recognised financial literacy principles adapted for the Bhutanese context.</p>
+        </div>
+        <div class="about-card">
+          <div class="aco">🔒</div>
+          <h3>Privacy First</h3>
+          <p>We do not collect, store, or process any personal financial data. The quiz and budget tools are entirely client-side and no information is transmitted to any server.</p>
+        </div>
+        <div class="about-card">
+          <div class="aco">🇧🇹</div>
+          <h3>Bhutan-Centred</h3>
+          <p>Our content, examples, and data are specific to Bhutan's unique socioeconomic context, including the ngultrum, local institutions, and the principles of Gross National Happiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Notice -->
+  <section class="section bg-neutral">
+    <div class="container">
+      <div class="privacy-notice">
+        <div class="pico">🛡️</div>
+        <div>
+          <h3>No Personal Data Collected — Ever</h3>
+          <p>
+            This website is a purely educational platform. It does not collect, store, process, or share any
+            personal financial information, income data, or identifying information of any kind. The Financial
+            Resilience Quiz operates entirely in your browser and no responses are recorded or transmitted.
+            All budget examples shown are fictional and illustrative only. The Tableau dashboard embedded on
+            this site displays pre-aggregated, anonymised data from household surveys and does not identify
+            any individual respondent.
+          </p>
+        </div>
+      </div>
+
+      <div class="card mt-8" style="border-left:5px solid var(--gold)">
+        <h3 style="margin-bottom:12px">Data Source Attribution</h3>
+        <p style="font-size:0.9rem;color:var(--neutral-600);line-height:1.7">
+          The interactive dashboard embedded in this platform is hosted on Tableau Public and was authored
+          as part of the <strong>Financial Resilience at the Household Level in Urban Bhutan</strong> research
+          initiative. The visualisation can be accessed directly at
+          <a href="https://public.tableau.com/app/profile/jubita.gurung1895/viz/FinancialResilienceattheHouseholdLevelinUrbanBhutan/IntroducingSmartBudgetBhutan2"
+             target="_blank" style="color:var(--red);font-weight:600">Tableau Public ↗</a>.
+          All content on this educational platform is provided in good faith for awareness purposes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Our values</div>
+      <h2 class="section-title">What Guides Us</h2>
+      <div class="divider"></div>
+      <div class="card-grid card-grid-3">
+        <div class="card" style="text-align:center;border-top:4px solid var(--red)">
+          <div style="font-size:2.4rem;margin-bottom:12px">🌿</div>
+          <h3 style="margin-bottom:8px">Accessibility</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">Financial knowledge should be available to every Bhutanese household, regardless of income level or education background.</p>
+        </div>
+        <div class="card" style="text-align:center;border-top:4px solid var(--gold)">
+          <div style="font-size:2.4rem;margin-bottom:12px">⚖️</div>
+          <h3 style="margin-bottom:8px">Integrity</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">We present data and advice honestly, acknowledging limitations and avoiding sensationalism or misleading claims.</p>
+        </div>
+        <div class="card" style="text-align:center;border-top:4px solid #2E7D32">
+          <div style="font-size:2.4rem;margin-bottom:12px">🤲</div>
+          <h3 style="margin-bottom:8px">Empowerment</h3>
+          <p style="font-size:0.875rem;color:var(--neutral-600)">Our goal is to give people the tools to make their own informed financial decisions — not to prescribe a single path.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-about -->
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>🏔️ Smart Budget Bhutan</h3>
+      <p>A financial awareness and literacy platform for urban Bhutanese households. No personal data collected. Built for education and empowerment.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('dashboard')">Dashboard</a></li>
+        <li><a href="#" onclick="showPage('budget')">Budget Examples</a></li>
+        <li><a href="#" onclick="showPage('tips')">Savings Tips</a></li>
+        <li><a href="#" onclick="showPage('quiz')">Quiz</a></li>
+        <li><a href="#" onclick="showPage('about')">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://www.rma.org.bt"  target="_blank">Royal Monetary Authority</a></li>
+        <li><a href="https://www.bnb.bt"      target="_blank">Bank of Bhutan</a></li>
+        <li><a href="https://www.ricbl.com"   target="_blank">RICBL Bhutan</a></li>
+        <li><a href="https://public.tableau.com/app/profile/jubita.gurung1895" target="_blank">Tableau Dashboard</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Smart Budget Bhutan · Educational Platform · No personal data collected</span>
+    <span>🇧🇹 Serving Urban Bhutan Households</span>
+  </div>
+</footer>
+
+
+<!-- Our JavaScript file (all logic lives in script.js) -->
+<script src="script.js"></script>
+
+</body>
+</html>

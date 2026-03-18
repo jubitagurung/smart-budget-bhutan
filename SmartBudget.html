@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Budget Bhutan</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-image: url("https://www.publicdomainpictures.net/pictures/270000/velka/flag-of-bhutan-bhutan-flag-nation.jpg");
+    background-size: cover;
+    background-position:center;
+    background-attachment: fixed;
+}
+
+/* Navigation */
+nav{ 
+    position:fixed;
+    top:0;
+    width:100%;
+    background:black;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:15px;
+    text-decoration:none;
+    font-size:18px;
+}
+
+/* Sections hidden */
+section, .overlay {
+    display:none;
+}
+
+/* Active section */
+.active {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    text-align:center;
+    padding:80px 20px;
+}
+
+/* Home */
+.overlay{
+    background: rgba(0,0,0,0.5);
+    color:white;
+}
+
+h1{
+    font-size:50px;
+}
+
+p{
+    font-size:18px;
+    width:60%;
+    background:#e25f0e;
+    padding:15px;
+    border-radius:10px;
+}
+
+/* Buttons */
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    background:#818c83;
+    cursor:pointer;
+    margin:10px;
+}
+
+button:hover{
+    background:white;
+}
+
+/* Dashboard */
+#dashboard{
+    background:white;
+}
+
+.tableau-container{
+    width:90%;
+    margin-top:20px;
+}
+
+/* ✅ Budget Section with Background Image */
+#budget{
+    background-image: url("https://thumbs.dreamstime.com/z/bhutanese-ngultrum-banknotes-depicting-kings-currency-kingdom-bhutan-currently-pegged-to-indian-rupee-parity-126929954.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding:80px 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Overlay for readability */
+.budget-overlay{
+    background: rgba(0,0,0,0.6);
+    padding:40px;
+    border-radius:10px;
+}
+
+/* Budget cards */
+.budget-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.budget-card{
+    background:#151203;
+    padding:20px;
+    border-radius:10px;
+    width:250px;
+    color:black;
+}
+
+/* Saving */
+#saving{
+    background-image: url("data:image/webp;base64,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"); 
+    background-size: cover;
+    background-position: center;
+    padding:80px 20px;
+    text-align: center;
+    color: white;
+}
+.tips-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.tip-card{
+    background:#14130b;
+    padding:20px;
+    width:250px;
+    border-radius:10px;
+}
+/* About Section */
+#about {
+    background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2b033f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1100px;
+}
+
+.about-card {
+    background: rgba(21, 18, 3, 0.88);   /* matches your #151203 but with opacity */
+    backdrop-filter: blur(6px);          /* nice modern glass effect – remove if you don't like it */
+    padding: 28px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+
+.about-card h3 {
+    color: #c9d1d9;   /* light gray for contrast */
+    margin-bottom: 16px;
+    border-bottom: 2px solid #6046ad;
+    padding-bottom: 8px;
+}
+
+.about-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-card ul li {
+    margin: 12px 0;
+    position: relative;
+    padding-left: 24px;
+}
+
+.about-card ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #818c83;
+}
+
+
+/* Footer */
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:black;
+    color:white;
+    text-align:center;
+    padding:10px;
+    
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a onclick="showSection('home')">Home</a>
+<a onclick="showSection('dashboard')">Dashboard</a>
+<a onclick="showSection('budget')">Budget</a>
+<a onclick="showSection('saving')">Saving</a>
+<a onclick="showSection('about')">About</a>
+</nav>
+
+<!-- HOME -->
+<div class="overlay active" id="home">
+<h1>Smart Budget Bhutan</h1>
+
+<p>
+I am currently an intern at Bhutan Data Scientist Pvt. Ltd. (BDS), where I am working on a project focused on financial resilience at the household level in urban Bhutan. This website presents the key insights from my project, including analysis of income, expenses, and saving patterns among Bhutanese families. It highlights the financial challenges households face and provides practical strategies and data-driven recommendations to help strengthen financial stability and resilience.
+</p>
+</p>
+
+<button onclick="showSection('dashboard')">Explore</button>
+</div>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+<h2>Financial Resilience Dashboard</h2>
+
+<div class="tableau-container">
+<iframe
+src="https://public.tableau.com/views/FinancialResilienceattheHouseholdLevelinUrbanBhutan/IntroducingSmartBudgetBhutan2?:showVizHome=no&:embed=true"
+width="100%"
+height="500">
+</iframe>
+</div>
+</section>
+
+<!--  BUDGET WITH OVERLAY -->
+<section id="budget">
+<div class="budget-overlay">
+
+<h2>Budget Examples</h2>
+
+<div class="budget-container">
+
+<div class="budget-card">
+<h3>Low Income</h3>
+<p>Income: Nu.20,000</p>
+<p>Savings: Nu.2,000</p>
+</div>
+
+<div class="budget-card">
+<h3>Middle Income</h3>
+<p>Income: Nu.40,000</p>
+<p>Savings: Nu.6,000</p>
+</div>
+
+<div class="budget-card">
+<h3>High Income</h3>
+<p>Income: Nu.80,000</p>
+<p>Savings: Nu.14,000</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SAVING -->
+<section id="saving">
+<h2>Saving Tips</h2>
+
+<div class="tips-container">
+
+<div class="tip-card">
+<h3>Track Spending</h3>
+<p>Monitor your daily expenses.</p>
+</div>
+
+<div class="tip-card">
+<h3>Save First</h3>
+<p>Save before spending.</p>
+</div>
+
+<div class="tip-card">
+<h3>Emergency Fund</h3>
+<p>Prepare for unexpected situations.</p>
+</div>
+</div>
+</section id="About" >
+<h2>About this project</h2>
+<div class="about-container">
+<div class="about-card"> 
+    <h3>Project Background</h3>
+    <p>I am intern at <Strong> Bhutan Data Scientist Pvt.Ltd. (BDS)</Strong>,Working on financial resilience at the household level in urban Bhutan.</p>
+    <p>This project analyzes real household data to understand income, expenses, savings behaviur, and financial stresspoints among Bhutanese Families.</p>
+</div>
+
+<div class="about-card">
+    <h3>Objectives</h3>
+    <ul>
+        <li>Identify key financial challenges in urban Bhutanese households</li>
+        <li>Visualize income, expenses, and saving patterns</li>
+        <li>Provide practical, data-informed saving and budgeting recommendations</li>
+        <li>Promote long-term financial stability and resilienece</li>
+    </ul>
+</div>
+
+<div class="about-card">
+    <h3>Tools and Technology</h3>
+    <p>Data analysis -> Tableau for visualization</p>
+    <p>Websites -> HTML, CSS, JavaScript (single-page application style)</p>
+    <p>Goal -> Make complex financial insights simple and actionable for everyone.</p>
+</div>
+</div>
+<section>
+
+</section>
+<footer>
+<p>2026 Smart Budget Bhutan</p>
+</footer>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll("section, .overlay").forEach(el => {
+        el.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
